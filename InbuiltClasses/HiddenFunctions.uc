@@ -8,6 +8,8 @@
  */
 class HiddenFunctions
 		native;
+		
+var rotator SurfaceRotator;
 
 /**
  * Creates a new vector with the given components.
@@ -19,6 +21,16 @@ native function vector vect( float X, float Y, float Z );
  */
 native function rotator rot( int Pitch, int Yaw, int Roll );
 
+/**
+* Converts a vector to rotator. Used by surface vector functions.
+*/
+native function SurfaceVect(vector SurfaceVector)
+{
+	SurfaceRotator.Pitch = SurfaceVector.Z;
+	SurfaceRotator.Yaw = SurfaceVector.Y;
+	SurfaceRotator.Roll = SurfaceVector.X;
+	return SurfaceRotator;
+}
 
 /**
  * Creates a new Object of the given class.
